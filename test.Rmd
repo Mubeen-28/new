@@ -1,0 +1,42 @@
+---
+title: "question 2"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Consider the following marks (out of 50) obtained in Mathematics by 60 students of Class VIII:
+21, 10, 30, 22, 33, 5, 37, 12, 25, 42, 15, 39, 26, 32, 18, 27, 28, 19, 29, 35, 31, 24,36, 18, 20, 38,
+22, 44, 16, 24, 10, 27, 39, 28, 49, 29, 32, 23, 31, 21, 34, 22, 23, 36, 24, 36, 33, 47, 48, 50, 39, 20,
+7, 16, 36, 45, 47, 30, 22, 17.
+1. Make a continuous frequency distribution and construct the columns of CF, RF. Also
+make suitable graph of this data.
+2. Find mean, median and mode
+
+
+
+```{r cars}
+stud_Class_viii <-c(21, 10, 30, 22, 33, 5, 37, 12, 25, 42, 15, 39, 26, 32, 18, 27, 28, 19, 29, 35, 31, 24,36, 18, 20, 38,
+                    22, 44, 16, 24, 10, 27, 39, 28, 49, 29, 32, 23, 31, 21, 34, 22, 23, 36, 24, 36, 33, 47, 48, 50, 39, 20,
+                    7, 16, 36, 45, 47, 30, 22, 17)
+stud_Class_viii
+range<- (50-5)/8
+range
+breaks = seq(4.5, 50.5, by=5)    # sequence of 5
+duration.cut = cut(stud_Class_viii, breaks, right=FALSE)
+duration.freq = table(duration.cut)
+transform(duration.freq,rel_freq=prop.table(duration.freq),cum_freq=cumsum(duration.freq))
+hist(stud_Class_viii,main = "Marksobtain by 60 students of Class VIII",col = "purple")
+mean(stud_Class_viii)
+# Create the function.
+getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+mode<- getmode(stud_Class_viii)
+mode
+median(stud_Class_viii)
+```
+
